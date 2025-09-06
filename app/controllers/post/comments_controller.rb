@@ -45,7 +45,7 @@ class Post::CommentsController < ApplicationController
     @article = Article.find(params[:article_id])
   end
 
-  # FIX: Permit :body instead of :content
+  
   def comment_params
     params.require(:comment).permit(:body)
   end

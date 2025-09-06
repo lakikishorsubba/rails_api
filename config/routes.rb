@@ -20,11 +20,13 @@ Rails.application.routes.draw do
   # custom
   controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
   }
 
   devise_scope :user do
-    delete 'account', to: 'users/sessions#destroy_account'
+    delete 'users/deleteacc', to: 'users/sessions#destroy_account'
+    patch 'users/change_password', to: 'users/registrations#change_password'
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

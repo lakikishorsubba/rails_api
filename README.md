@@ -19,6 +19,8 @@ rails generate scaffold Comment body:text user:references article:references
 rails generate scaffold Like user:references article:references
 rails db:migrate
 
+
+## Quick Rails Commands
 ```bash
 added password reset via Postman or letter_operator.
 check how to implement controller with custom password reset.

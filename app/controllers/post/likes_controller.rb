@@ -2,26 +2,17 @@ class Post::LikesController < ApplicationController
     before_action :authenticate_user!
     before_action :set_article
 
-    def create
-        like = @article.likes.new(user: current_user)
+   def toggle
+    like = @article.likes.find_by(user_id: current_user.id)
 
-        if like.save
-            render json: {status: "Liked", likes_count: @article.likes_count}
-        else 
-            render json: {status: "Error", error: like.error.full_messages}, status: :unprocessable_entity
-        end
+    if like
+      like.destroy
+      render json: { status: "unliked", likes_count: @article.likes.count }
+    else
+      @article.likes.create!(user_id: current_user.id)
+      render json: { status: "liked", likes_count: @article.likes.count }
     end
-
-    def destroy
-        like = @article.likes.find_by(user: current_user)
-        if like
-            like.destroy
-            render json: {status: "unliked", likes_count:@article.likes_count}
-        else
-            render json: {status: "error", messages: "not liked yet"}, status: :not_found
-    
-        end
-    end
+  end
 
     private
 

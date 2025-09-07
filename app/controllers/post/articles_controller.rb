@@ -67,6 +67,7 @@ class Post::ArticlesController < ApplicationController
 
     # Attach new files if any
     if params[:files].present?
+      @article.files.purge
       Array(params[:files]).each do |file|
         @article.files.attach(file)
       end

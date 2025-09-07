@@ -5,8 +5,7 @@ Rails.application.routes.draw do
     resources :articles do
         resources :comments, only: [:create, :destroy, :index]
         # resources :likes, only: [:create, :destroy]
-        post 'like', to: 'likes#create'
-        delete 'unlike', to: 'likes#destroy'
+        post "toggle_like", to: "likes#toggle"
     end
   end
   

@@ -39,6 +39,7 @@ Please use Postman to test the functionality as it is developed as pure --API
 - Users can **like articles**.
 - Each user can like Article only one time. 
 - User can unlike Article.
+- Instead of have different like and unlike button, user can simply click to like and double click to unlike(toggle).
 - `likes_count` is returned in article responses.
 
 ## File Uploads
@@ -56,3 +57,4 @@ Please use Postman to test the functionality as it is developed as pure --API
 - Default development host:  
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 - Try ti login again using new password. 
+

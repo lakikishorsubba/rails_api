@@ -41,4 +41,9 @@ Rails.application.routes.draw do
     patch 'users/change_password', to: 'users/registrations#change_password'
   end
   get "up" => "rails/health#show", as: :rails_health_check
+
+  namespace :users do 
+    resource :profile, only: [:show, :update, :destroy]
+    get '/profiles/:id', to: 'profiles#public'
+  end
 end

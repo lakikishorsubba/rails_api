@@ -79,3 +79,9 @@ What if you are building a application that is private to your organization?
 - An Admin reviews requests and approves/denies.
 - Only approved users can log in successfully.
 
+## User Profile
+Everyone loves customize profile.
+---
+- Edit name.
+- Edit profile picture(ActiveStorage file).
+- Edit bio.

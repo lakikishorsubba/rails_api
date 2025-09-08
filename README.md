@@ -1,9 +1,9 @@
 # Rails API Backend
 
-This project is a **Ruby on Rails API with Postman** that provides authentication, password reset, account delete, Association, article management, file uploads, comments, and likes functionality.  
+This a **Ruby on Rails API with Postman Project** that has authentication, user role (user/admin), password reset, account delete, Association, article management(CRUD), file uploads, comments, and likes functionality.  
 It uses **Devise + JWT** for authentication and **ActiveStorage** for file handling.
 
-Please use Postman to test the functionality as it is developed as pure --API
+Please use Postman to test the functionality since it is --API only.
 
 ## Authentication & Security
 - Integrated **Devise** for authentication.
@@ -66,10 +66,11 @@ Please use Postman to test the functionality as it is developed as pure --API
 
 
 ## Request Signup.
-Ummm.... I have much more interesting things to develop and share.
+Yeah!!! 
+I have developed much more interesting things.
 ------
-what if you are building a application that is private to your organization? 
-- So user cannot register and login directly, user can req for registration and admin can approve or reject. This is what exactly i have implemented.
+What if you are building a application that is private to your organization? 
+- So user cannot register and login directly, user must request for registration and admin will approve or reject. This is what exactly i have implemented.
 - User cannot log in right after signup.
 - User must first send a registration request.
  - Generate new column: rails generate migration AddApprovedToUsers   approved:boolean.

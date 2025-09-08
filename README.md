@@ -16,6 +16,12 @@ Please use Postman to test the functionality as it is developed as pure --API
   - **Logout / JWT revocation**
   - **Account deletion**
 
+## Account registration(invite only)
+- User cannot log in right after signup.
+- User must first send a registration request.
+- An Admin reviews requests and approves/denies.
+- Only approved users can log in successfully.
+- 
 ## Articles
 - Full **CRUD** (create, read, update, delete).
 - Each article belongs to a **User**.
@@ -57,4 +63,18 @@ Please use Postman to test the functionality as it is developed as pure --API
 - Default development host:  
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 - Try ti login again using new password. 
+
+
+## Request Signup.
+Ummm.... I have much more interesting things to develop and share.
+------
+what if you are building a application that is private to your organization? 
+- So user cannot register and login directly, user can req for registration and admin can approve or reject. This is what exactly i have implemented.
+- User cannot log in right after signup.
+- User must first send a registration request.
+ - Generate new column: rails generate migration AddApprovedToUsers   approved:boolean.
+ - default: "user"
+- Generate user role: rails generate migration AddRoleToUsers role:string
+- An Admin reviews requests and approves/denies.
+- Only approved users can log in successfully.
 

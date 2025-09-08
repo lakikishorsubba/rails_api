@@ -8,6 +8,19 @@ Rails.application.routes.draw do
         post "toggle_like", to: "likes#toggle"
     end
   end
+
+  #admin
+  namespace :admin do
+    resources :users, only: [] do
+      collection do
+        get :pending
+      end
+      member do
+        patch :approved
+      end
+    end
+  end
+
   
   # default User authentication routes.
   devise_for :users, path: '', path_names: {
@@ -16,17 +29,16 @@ Rails.application.routes.draw do
   registration: 'signup'
   },
 
+
   # custom
   controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     passwords: 'users/passwords'
   }
-
   devise_scope :user do
     delete 'users/deleteacc', to: 'users/sessions#destroy_account'
     patch 'users/change_password', to: 'users/registrations#change_password'
   end
-
   get "up" => "rails/health#show", as: :rails_health_check
 end

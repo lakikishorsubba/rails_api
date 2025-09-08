@@ -62,7 +62,7 @@ Please use Postman to test the functionality since it is --API only.
 - Used password reset token, new password and confirmation password with Authorization token.
 - Default development host:  
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
-- Try ti login again using new password. 
+- Login again using new password. 
 
 
 ## Request Signup.

@@ -1,18 +1,19 @@
 class Post::ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_article, only: [:show, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show] 
+  before_action :set_article, only: [:show, :update, :destroy] #to the specific function set_article, allow this cruds
 
-  # GET /articles
   def index
-    articles = Article.includes(:user, :comments, files_attachments: :blob).all
+    #include is a database level optimization
+    # will pre-load all the records including its accociation.
+    articles = Article.includes(:user, :comments, files_attachments: :blob).all #all is to fetch the records
+    #customize the rendering
     render json: articles.as_json(
-      methods: [:likes_count, :file_urls],
-      include: { 
+      methods: [:likes_count, :file_urls], #calling custom ruby method
+      include: { #include includes associated data (article and comment)
         user: { only: [:id, :email] }, 
-        comments: { 
-          include: { user: { only: [:id, :email] } },
-          only: [:id, :body]
-        }
+        comments: { include: { 
+          user: { only: [:id, :email] } }, 
+          only: [:id, :body]}
       }
     )
   end
@@ -67,7 +68,7 @@ class Post::ArticlesController < ApplicationController
 
     # Attach new files if any
     if params[:files].present?
-      @article.files.purge
+      @article.files.purge #rails remove record from db and file from local storage.
       Array(params[:files]).each do |file|
         @article.files.attach(file)
       end

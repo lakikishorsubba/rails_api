@@ -44,7 +44,7 @@ Please use Postman to test the functionality since it is --API only.
 ## Likes
 - Users can **like articles**.
 - Each user can like Article only one time. 
-- User can unlike Article.
+- User can `unlike Article`.
 - Instead of have different like and unlike button, user can simply click to like and double click to unlike(toggle).
 - `likes_count` is returned in article responses.
 
@@ -68,7 +68,6 @@ Please use Postman to test the functionality since it is --API only.
 ## Request Signup.
 Yeah!!! 
 I have developed much more interesting things.
-------
 What if you are building a application that is private to your organization? 
 - So user cannot register and login directly, user must request for registration and admin will approve or reject. This is what exactly i have implemented.
 - User cannot log in right after signup.
@@ -80,7 +79,7 @@ What if you are building a application that is private to your organization?
 - Only approved users can log in successfully.
 
 ## User Profile
-Everyone loves customize profile.
+Everyone love to customize profile.
 - Edit name.
 - Edit profile picture(ActiveStorage file).
 - Edit bio.

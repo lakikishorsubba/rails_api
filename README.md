@@ -2,8 +2,7 @@
 
 This a **Ruby on Rails API with Postman Project** that has authentication, user role (user/admin), password reset, account delete, Association, article management(CRUD), file uploads, comments, and likes functionality.  
 It uses **Devise + JWT** for authentication and **ActiveStorage** for file handling.
-
-Please use Postman to test the functionality since it is --API only.
+Use Postman to test the functionality since it is --API only.
 
 ## Authentication & Security
 - Integrated **Devise** for authentication.

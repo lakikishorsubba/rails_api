@@ -49,7 +49,7 @@ Use Postman to test the functionality since it is --API only.
 
 ## File Uploads
 - Implemented with **ActiveStorage**.
-- To handle file, DB Bolb and Attachment table and stores actual file in local storage.
+- To handle file upload, in DB Bolb and Attachment table are created and it maps to file in local storage.
 - Returns file url in Postman to verify file upload.
 - Files stored on local disk by default.
 - JSON response includes **direct URLs** for uploaded files.

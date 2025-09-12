@@ -1,5 +1,10 @@
 # Rails API Backend
 
+## To run docker image.
+- Clone from git.
+- docker build -t article-api .
+- docker run -p 3000:3000 article-api
+
 This a **Ruby on Rails API with Postman Project** that has authentication, user role (user/admin), password reset, account delete, Association, article management(CRUD), file uploads, comments, and likes functionality.  
 It uses **Devise + JWT** for authentication and **ActiveStorage** for file handling.
 Use Postman to test the functionality since it is --API only.

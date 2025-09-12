@@ -16,20 +16,18 @@ class Users::ProfilesController < ApplicationController
     end
   end
 
-  # DELETE /profile
   def destroy
     current_user.avatar.purge if current_user.avatar.attached?
     render json: current_user.profile_json, status: :ok
   end
 
-  # GET /profiles/:id (public view)
+  # GET /profiles/:id (public view) available to view
   def public
     user = User.find(params[:id])
     render json: user.profile_json
   end
 
   private
-
   def profile_params
     params.permit(:name, :bio)
   end

@@ -9,11 +9,11 @@ RUN apt-get update -qq && \
 # Set working directory
 WORKDIR /app
 
-# Copy Gemfiles and install gems
+# Copy project Gemfiles and install gems
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler -v 2.4.15 && bundle install
 
-# Copy all project files
+# Copy all project files or codes
 COPY . .
 
 # Expose Rails default port

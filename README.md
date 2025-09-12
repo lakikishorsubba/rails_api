@@ -1,7 +1,7 @@
 # Rails API Backend
 
 ## To run docker image.
-- Clone from git.
+- Clone from git or simply **git clone** to run.
 - docker build -t article-api .
 - docker run -p 3000:3000 article-api
 

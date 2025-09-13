@@ -16,7 +16,7 @@ Use Postman to test the functionality since it is --API only.
 - Features:
   - User **registration & login**
   - **Password reset** via email
-    - But must use Authorization token and password reset token to change password.
+  - But must use Authorization token and password reset token to change password.
   - **Logout / JWT revocation**
   - **Account deletion**
 
@@ -25,11 +25,12 @@ Use Postman to test the functionality since it is --API only.
 - User must first send a registration request.
 - An Admin can reviews requests and approves/denies.
 - Only approved users can log in successfully.
+
 ## login
 - login using credintials.
-- if invalid credintials added for 5 times then (Your account is locked for 15min.)
-- this is to prevent bruteforce.
-- uses devise lockable module to lock attempt.
+- If invalid credintials added for 5 times then Your account is locked for 15min.
+- Ihis is to prevent bruteforce.
+- It uses Devise lockable module to lock attempt.
 
 ## Articles
 - Full **CRUD** (create, read, update, delete).

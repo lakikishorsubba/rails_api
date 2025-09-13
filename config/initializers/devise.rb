@@ -305,11 +305,13 @@ Devise.setup do |config|
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
 
-  # ==> Configuration for :registerable
+  # Number of failed attempts before locking
+  config.lock_strategy = :failed_attempts
+  config.unlock_strategy = :time
+  config.maximum_attempts = 5
+  config.unlock_in = 15.minutes
 
-  # When set to false, does not sign a user in automatically after their password is
-  # changed. Defaults to true, so a user is signed in automatically after changing a password.
-  # config.sign_in_after_change_password = true
+
   config.navigational_formats = []
 
   config.jwt do |jwt|

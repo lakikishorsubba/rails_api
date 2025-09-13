@@ -13,8 +13,8 @@ class Post::CommentsController < ApplicationController
 
   # POST /articles/:article_id/comments
   def create
+    # create comment, merge it to the current user.
     comment = @article.comments.new(comment_params.merge(user: current_user))
-
     if comment.save
       render json: comment.as_json(
         only: [:id, :body, :created_at],

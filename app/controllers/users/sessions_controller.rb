@@ -1,9 +1,10 @@
 
 class Users::SessionsController < Devise::SessionsController
+    include RackSessionsFix
   # before_action :configure_sign_in_params, only: [:create]
   before_action :authenticate_user!
   respond_to :json
-  include RackSessionsFix
+ #delete user
  def destroy_account
     if current_user.destroy
       render json: { status: 200, message: "Account deleted successfully." }

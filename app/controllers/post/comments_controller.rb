@@ -21,6 +21,8 @@ class Post::CommentsController < ApplicationController
         include: { user: { only: [:id, :email] } }
       ), status: :created
     else
+      #http 422 error meaning the syntax is correct but invalid entry of data logically.
+      #the actual error comes (like missing required fields, wrong data format, etc) from errors:
       render json: { status: "error", errors: comment.errors.full_messages }, status: :unprocessable_entity
     end
   end

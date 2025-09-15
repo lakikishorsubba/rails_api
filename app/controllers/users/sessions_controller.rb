@@ -14,9 +14,9 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   private
-
- def respond_with(resource, _opts = {})
-  if resource.approved?
+#login user if approved
+ def respond_with(resource, _opts = {}) #resource is current user, _opts is options hash
+  if resource.approved? 
     render json: {
       status: { 
         code: 200, message: 'Logged in successfully.',
@@ -24,7 +24,7 @@ class Users::SessionsController < Devise::SessionsController
       }
     }, status: :ok
   else
-    render json: { status: { code: 401, message: "Your account is pending admin." } }, status: :unauthorized
+    render json: { status: { code: 401, message: "Your account is in pending, wait until admin approve." } }, status: :unauthorized
   end
 end
 

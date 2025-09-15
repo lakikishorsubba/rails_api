@@ -15,24 +15,19 @@ class Users::SessionsController < Devise::SessionsController
 
   private
 
-  def respond_with(resource, _opts = {})
-    if resource.access_locked?
-      unlock_time = ((resource.locked_at + Devise.unlock_in) - Time.current).to_i
-      render json: { 
-        status: 423, 
-        message: "Account locked. Try again in #{unlock_time} seconds."
-      }, status: :locked
-    elsif resource.approved?
-      render json: {
-        status: { 
-          code: 200, message: 'Logged in successfully.',
-          data: { user: UserSerializer.new(resource).serializable_hash[:data][:attributes] }
-        }
-      }, status: :ok
-    else
-      render json: { status: { code: 401, message: "Your account is pending admin." } }, status: :unauthorized
-    end
+ def respond_with(resource, _opts = {})
+  if resource.approved?
+    render json: {
+      status: { 
+        code: 200, message: 'Logged in successfully.',
+        data: { user: UserSerializer.new(resource).serializable_hash[:data][:attributes] }
+      }
+    }, status: :ok
+  else
+    render json: { status: { code: 401, message: "Your account is pending admin." } }, status: :unauthorized
   end
+end
+
 
   def respond_to_on_destroy
     if request.headers['Authorization'].present?

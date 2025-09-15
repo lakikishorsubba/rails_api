@@ -25,16 +25,18 @@ class Users::SessionsController < Devise::SessionsController
     }, status: :ok
   else
     render json: { status: { code: 401, message: "Your account is in pending, wait until admin approve." } }, status: :unauthorized
+    end
   end
-end
 
-
+  #logout user
   def respond_to_on_destroy
-    if request.headers['Authorization'].present?
+    if request.headers['Authorization'].present? #check if the Authorization header is present
+      #decode the JWT token to find the user
       jwt_payload = JWT.decode(request.headers['Authorization'].split(' ').last, Rails.application.credentials.devise_jwt_secret_key!).first
+      # Find the user based on the decoded JWT payload
       user = User.find_by(id: jwt_payload['sub'])
     end
-
+    # If the user is found, sign them out
     if user
       render json: { status: 200, message: 'Logged out successfully.' }, status: :ok
     else

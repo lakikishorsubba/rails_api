@@ -31,9 +31,9 @@ class Users::SessionsController < Devise::SessionsController
   #logout user
   def respond_to_on_destroy
     if request.headers['Authorization'].present? #check if the Authorization header is present
-      #decode the JWT token to find the user
+      #decode the JWT token using secret to find the user id(sub)
       jwt_payload = JWT.decode(request.headers['Authorization'].split(' ').last, Rails.application.credentials.devise_jwt_secret_key!).first
-      # Find the user based on the decoded JWT payload
+      # Find the user based on the decoded JWT sub.
       user = User.find_by(id: jwt_payload['sub'])
     end
     # If the user is found, sign them out

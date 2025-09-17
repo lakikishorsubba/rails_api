@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_one_attached :avatar, dependent: :destroy
+  acts_as_tenant(:organization)
+  belongs_to :organization
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :lockable,

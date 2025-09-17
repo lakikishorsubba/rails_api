@@ -5,6 +5,8 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'jsonapi-serializer'
 gem 'letter_opener'
+gem 'acts_as_tenant'
+# gem 'pg', '~> 1.6' 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.2", ">= 8.0.2.1"

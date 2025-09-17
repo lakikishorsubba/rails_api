@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_13_174104) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_17_173245) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -45,6 +45,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_13_174104) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "organization_id", null: false
+    t.index ["organization_id"], name: "index_articles_on_organization_id"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -54,7 +56,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_13_174104) do
     t.integer "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "organization_id", null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
+    t.index ["organization_id"], name: "index_comments_on_organization_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -66,6 +70,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_13_174104) do
     t.index ["article_id"], name: "index_likes_on_article_id"
     t.index ["user_id", "article_id"], name: "index_likes_on_user_id_and_article_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,16 +94,21 @@ ActiveRecord::Schema[8.0].define(version: 2025_09_13_174104) do
     t.integer "failed_attempts", default: 0, null: false
     t.string "unlock_token"
     t.datetime "locked_at"
+    t.integer "organization_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["jti"], name: "index_users_on_jti"
+    t.index ["organization_id"], name: "index_users_on_organization_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "articles", "organizations"
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
+  add_foreign_key "comments", "organizations"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "articles"
   add_foreign_key "likes", "users"
+  add_foreign_key "users", "organizations"
 end

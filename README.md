@@ -22,7 +22,7 @@ Use Postman to test the functionality since it is --API only.
 ## Account registration(invite only)
 - User cannot log in right after signup.
 - User must first send a registration request.
-- An Admin can reviews requests and approves/denies.
+- An Admin can review requests and approve/deny.
 - Only approved users can log in successfully.
 
 ## login

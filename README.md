@@ -29,7 +29,7 @@ Use Postman to test the functionality since it is --API only.
 - login using credintials.
 - If invalid credintials added for 5 times then Your account is locked for 15min.
 - Ihis is to prevent bruteforce.
-- It uses Devise lockable module to lock attempt.
+- It uses Devise :lockable module to lock attempt.
 
 ## Articles
 - Full **CRUD** (create, read, update, delete).

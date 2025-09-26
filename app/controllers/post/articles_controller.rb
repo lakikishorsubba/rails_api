@@ -9,7 +9,7 @@ class Post::ArticlesController < ApplicationController
     #customize the rendering 
     render json: articles.as_json(
       methods: [:likes_count, :file_urls], #calling custom ruby method
-      include: { #include includes associated data (article and comment)
+      include: { #include will includes associated data (article and comment)
         user: { only: [:id, :email] }, 
         comments: { include: { 
           user: { only: [:id, :email] } }, 

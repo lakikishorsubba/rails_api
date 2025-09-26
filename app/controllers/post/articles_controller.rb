@@ -3,10 +3,10 @@ class Post::ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :update, :destroy] #to the specific function set_article, allow this cruds
 
   def index
-    #include is a database level optimization
+    #include is a database level optimization that avoids N+1 query problem.
     # will pre-load all the records including its accociation.
     articles = Article.includes(:user, :comments, files_attachments: :blob).all #all is to fetch the records
-    #customize the rendering
+    #customize the rendering 
     render json: articles.as_json(
       methods: [:likes_count, :file_urls], #calling custom ruby method
       include: { #include includes associated data (article and comment)

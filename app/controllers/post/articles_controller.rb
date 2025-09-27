@@ -4,7 +4,7 @@ class Post::ArticlesController < ApplicationController
 
   def index
     #include is a database level optimization that avoids N+1 query problem.
-    # will pre-load all the records including its accociation so it need not have to load again and again.
+    # will pre-load all records including its accociation so it need not have to load again and again.
     articles = Article.includes(:user, :comments, files_attachments: :blob).all #all is to fetch the records
     #customize the rendering 
     render json: articles.as_json(

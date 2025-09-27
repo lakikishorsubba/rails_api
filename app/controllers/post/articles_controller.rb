@@ -1,6 +1,7 @@
 class Post::ArticlesController < ApplicationController
+
   before_action :authenticate_user!, except: [:index, :show] 
-  before_action :set_article, only: [:show, :update, :destroy] #to the specific function set_article, allow this cruds
+  before_action :set_article, only: [:show, :update, :destroy] #to the specific function set_article, allow this crud
 
   def index
     #include is a database level optimization that avoids N+1 query problem.

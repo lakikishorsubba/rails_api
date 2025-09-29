@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
   #authenticate_user! is a devise helper method, 
   #before_action is a rails method that calls anotehr method :authenticate_user! 
   #  : act as a referrence to name (method).
-  before_action :authenticate_user! # if no user is login redirect, else go on with the controller
+  before_action :authenticate_user! # if no user is login then redirect, else go on with the controller
   before_action :authorize_admin! # to ensure user is admin.
 
   def pending
